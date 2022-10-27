@@ -11,3 +11,9 @@ button {
 .alert {
     margin-top: 1rem;
 }
+.btn-danger{
+    background-color: red !important;
+    border-color: red !important;
+    margin-left: 0.3rem;
+    border-radius: 50%;
+}

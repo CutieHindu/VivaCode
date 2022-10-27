@@ -40,24 +40,70 @@
   <form class="fHome" [formGroup]="myForm" (ngSubmit)="print()">
     <div class="form-group">
       <label for="Fname">First Name</label>
-      <input type="text" class="form-control" id="Fname" name="FirstName" placeholder="Enter Your first name" formControlName="fName">
-      <!-- <div class="alert alert-danger" role="alert">
+      <input type="text" class="form-control" id="Fname" name="FirstName" placeholder="Enter Your first name" formControlName="fName" required minlength="5">
+      <div class="alert alert-danger" role="alert" *ngIf="myForm.get('fName').touched && myForm.get('fName').hasError('required')">
         Error for First Name !
-      </div> -->
+      </div>  
+      <div class="alert alert-danger" role="alert" *ngIf="myForm.get('fName').hasError('minlength')">
+        Minimmum 5 caracts !
+      </div> 
     </div>
     <div class="form-group">
       <label for="LName">Last Name</label>
       <input type="text" class="form-control" id="LName"  name="LatName" placeholder="Enter Your last name" formControlName="lName">
-      <!-- <div class="alert alert-danger" role="alert" [hidden]="lastName.valid || lastName.pristine">
+      <div class="alert alert-danger" role="alert" *ngIf="myForm.get('lName').touched && myForm.get('lName').hasError('required')">
         This Last Name is required !
-      </div> -->
+      </div>
     </div>
     <div class="form-group">
-        <label for="age">Last Name</label>
+        <label for="age">Age</label>
         <input type="number" class="form-control" id="age"  name="Age" placeholder="Enter Your age" formControlName="age">
+        <div class="alert alert-danger" role="alert" *ngIf="myForm.get('age').touched && myForm.get('age').hasError('required')">
+          This Age is required !
+        </div>
       </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email"  name="email" placeholder="Enter Your Email" formControlName="email" required>
+        <div class="alert alert-danger" role="alert" *ngIf="myForm.get('email').touched && myForm.get('email').hasError('required')">
+          This email is required !
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="myForm.get('email').hasError('email')">
+          This is not email !
+        </div>
+      </div>
+
+
+
+      <div class="form-group" formArrayName="items">
+        <div *ngFor="let item of myForm.controls.items['controls'];index as i" [formGroupName]="i">
+          <input type="text" formControlName="id">
+          <input type="text" formControlName="title">
+          <button (click)="Delete(i)" class="btn btn-danger" >×</button>
+        </div>
+      </div>
+
+
     <div class="form-group">
-        <button type="submit" class="btn btn-primary" >Submit</button>
+      <button (click)="addNewItem()" class="btn btn-primary">Add new</button>
+    </div>
+
+    <div formArrayName="inputs" class="form-group">
+      <div *ngFor="let input of myForm.controls.inputs['controls'];index as i" [formGroupName]="i">
+        <input type="text" formControlName="id">
+      </div>
+    </div>
+
+
+
+
+
+    <div class="form-group">
+      <button (click)="addNewInput()" class="btn btn-primary">Add new input</button>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid" >Submit</button>
     </div>
   </form>
 

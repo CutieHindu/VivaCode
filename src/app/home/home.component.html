@@ -1,0 +1,27 @@
+<!-- <input type="text" [(ngModel)]="Nom">
+<div>
+    <button class="btn btn-primary" (click)="goToDetails()">
+        Details profil
+    </button>
+    <button class="btn btn-success" (click)="goToView()">
+        View profil
+    </button>
+</div> -->
+
+<form class="fHome" #f="ngForm" (ngSubmit)="add(f)">
+    <div class="form-group">
+      <label for="Fname">First Name</label>
+      <input type="text" class="form-control" id="Fname" name="FirstName" placeholder="Enter Your first name" ngModel [ngModelOptions]="{standalone:false}" >
+    </div>
+    <div class="form-group">
+      <label for="LName">Last Name</label>
+      <input type="text" class="form-control" id="LName"  name="LatName" placeholder="Enter Your last name" ngModel [ngModelOptions]="{standalone:false}">
+    </div>
+    <div class="form-group">
+        <label for="age">Last Name</label>
+        <input type="number" class="form-control" id="age"  name="Age" placeholder="Enter Your age" ngModel [ngModelOptions]="{standalone:false}">
+      </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>

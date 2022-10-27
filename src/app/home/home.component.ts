@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm, NgModel } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, NgModel } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ShareServiceService } from '../Services/share-service.service';
 
@@ -10,6 +10,11 @@ import { ShareServiceService } from '../Services/share-service.service';
 })
 export class HomeComponent implements OnInit {
 
+  myForm = new FormGroup({
+    fName: new FormControl(),
+    lName: new FormControl(),
+    age: new FormControl()
+  })
   constructor( private route: Router,
     private service: ShareServiceService
     ) { 
@@ -32,6 +37,10 @@ export class HomeComponent implements OnInit {
   add(f: NgForm){
     let data = f.value;
     console.log(data)
+  }
+
+  print(){
+    console.log(this.myForm);
   }
  
 }

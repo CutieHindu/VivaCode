@@ -12,8 +12,8 @@ button {
     margin-top: 1rem;
 }
 .btn-danger{
-    background-color: red !important;
-    border-color: red !important;
+    background-color: #F78F8F !important;
+    border-color: #F78F8F !important;
     margin-left: 0.3rem;
     border-radius: 50%;
 }

@@ -97,8 +97,13 @@ export class HomeComponent implements OnInit {
     this.items.push(newInput);
   }
  
-  Delete(i: any){
+  Delete(i: any,){
     this.items.removeAt(i);
+  }
+
+   
+  DeleteInput(i: any,){
+    this.inputs.removeAt(i);
   }
   
   addNewInput(){

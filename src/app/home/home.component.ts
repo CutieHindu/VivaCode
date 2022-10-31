@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, NgForm, NgModel, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ShareServiceService } from '../Services/share-service.service';
@@ -15,9 +15,12 @@ export class HomeComponent implements OnInit {
   //   lName: new FormControl(),
   //   age: new FormControl()
   // })
+  @Input() hind = "hi"
   myForm: any;
+  num: any
   constructor( private route: Router,
-    private service: ShareServiceService, private formbuilder: FormBuilder
+    private service: ShareServiceService,
+    private formbuilder: FormBuilder,
     ) { 
       // this.service.print();
       console.log(this.service.data)
@@ -43,6 +46,7 @@ export class HomeComponent implements OnInit {
         })
       ])
     })
+
     }
 
   ngOnInit() {
@@ -83,7 +87,7 @@ export class HomeComponent implements OnInit {
   }
 
   get items(){
-    return this.myForm.get('items') as FormArray
+    return this.myForm.get('items') 
   }
 
   get inputs(){

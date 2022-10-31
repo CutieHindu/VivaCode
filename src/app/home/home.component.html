@@ -19,9 +19,8 @@
     </div>
     <div class="form-group">
       <label for="LName">Last Name</label>
-      <input type="text" class="form-control" id="LName"  name="LatName" placeholder="Enter Your last name" ngModel [ngModelOptions]="{standalone:false}"
-      #lastName="ngModel" required>
-      <div class="alert alert-danger" role="alert" [hidden]="lastName.valid || lastName.pristine">
+      <input type="text" class="form-control" id="LName"  name="LatName" placeholder="Enter Your last name" [(ngModel)]="hind" #k="ngModel" required>
+      <div class="alert alert-danger" role="alert" [hidden]="k.valid || k.pristine">
         This Last Name is required !
       </div>
     </div>
@@ -34,13 +33,11 @@
     </div>
   </form>
 
-
-
   <h2> With Reactive Forms </h2>
   <form class="fHome" [formGroup]="myForm" (ngSubmit)="print()">
     <div class="form-group">
       <label for="Fname">First Name</label>
-      <input type="text" class="form-control" id="Fname" name="FirstName" placeholder="Enter Your first name" formControlName="fName" required minlength="5">
+      <input type="text" class="form-control" id="Fname" name="FirstName" placeholder="Enter Your first name" formControlName="fName" >
       <div class="alert alert-danger" role="alert" *ngIf="myForm.get('fName').touched && myForm.get('fName').hasError('required')">
         Error for First Name !
       </div>  
@@ -73,8 +70,6 @@
         </div>
       </div>
 
-
-
       <div class="form-group" formArrayName="items">
         <div *ngFor="let item of myForm.controls.items['controls'];index as i" [formGroupName]="i">
           <input type="text" formControlName="id" >
@@ -82,7 +77,6 @@
           <button (click)="Delete(i)" class="btn btn-danger" >×</button>
         </div>
       </div>
-
 
     <div class="form-group">
       <button (click)="addNewItem()" class="btn btn-primary">Add new</button>

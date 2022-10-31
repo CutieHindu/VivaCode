@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChildren } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +7,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'VivaCode';
+  
+  firstname= 'ahlam'
 
-  firstname= 'hind'
+  
+
+  p= {
+    id: "3",
+    movie: 'hi'
+  }
+
+  printData(event: any){
+    console.log(event)
+  }
 }

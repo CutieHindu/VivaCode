@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild, ViewChildren } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, NgForm, NgModel, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ShareServiceService } from '../Services/share-service.service';
@@ -8,7 +8,7 @@ import { ShareServiceService } from '../Services/share-service.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
 
   // myForm = new FormGroup({
   //   fName: new FormControl(),
@@ -18,6 +18,9 @@ export class HomeComponent implements OnInit {
   @Input() hind = "hi"
   myForm: any;
   num: any
+  @ViewChild('b') myin!: ElementRef;
+  @ViewChildren('test') test!: ElementRef
+
   constructor( private route: Router,
     private service: ShareServiceService,
     private formbuilder: FormBuilder,
@@ -48,6 +51,11 @@ export class HomeComponent implements OnInit {
     })
 
     }
+
+  ngAfterViewInit() {
+    //this.myin.nativeElement.focus();
+    this.test.nativeElement.focus();
+}
 
   ngOnInit() {
   }

@@ -12,7 +12,7 @@
     <div class="form-group">
       <label for="Fname">First Name</label>
       <input type="text" class="form-control" id="Fname" name="FirstName" placeholder="Enter Your first name" ngModel [ngModelOptions]="{standalone:false}"
-      #firstName="ngModel" required  minlength="5" maxlength="15">
+      #firstName="ngModel" required  minlength="5" maxlength="15" #focus>
       <div class="alert alert-danger" role="alert" *ngIf="firstName.errors?.['required'] && firstName.touched || firstName.errors?.['minlength']">
         Error for First Name !
       </div>
@@ -84,7 +84,7 @@
 
     <div formArrayName="inputs" class="form-group">
       <div *ngFor="let input of myForm.controls.inputs['controls'];index as i" [formGroupName]="i">
-        <input type="text" formControlName="id">
+        <input type="text" formControlName="id" #test>
         <button (click)="DeleteInput(i)" class="btn btn-danger" >×</button>
       </div>
     </div>
@@ -97,5 +97,8 @@
         <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid" >Submit</button>
     </div>
   </form>
+
+  <input type="text" #test>
+
 
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ShareServiceService } from '../Services/share-service.service';
 
@@ -9,13 +9,19 @@ import { ShareServiceService } from '../Services/share-service.service';
 })
 export class AboutComponent implements OnInit,OnDestroy {
   @Input("name") myName:any
-  num: any;
+  @Input("profile") p:any
+  @Output() myEvent = new EventEmitter();
+  num: any; 
   ob: Subscription
   constructor(private service: ShareServiceService) {
     this.ob= this.service.testObservable().subscribe(k => this.num=k)
    }
 
   ngOnInit(): void {
+  }
+  
+  print(){
+    this.myEvent.emit("hind");
   }
 
   ngOnDestroy(): void {
